@@ -151,6 +151,10 @@
             Built: ${item["Built Qty"] || 0}<br>
             Painted: ${item["Painted Qty"] || 0}
           </div>
+
+          </div class="meta">
+            ${item.Notes || ""}
+          </div>
         `;
 
         container.appendChild(card);
