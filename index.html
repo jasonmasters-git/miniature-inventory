@@ -150,14 +150,6 @@
         card.className = "card";
 
         card.innerHTML = `
-          ${item.Image ? `
-    <img
-      class="mini-image"
-      src="${item.Image}"
-      alt="${item.Unit}"
-      onerror="this.style.display='none'"
-    >
-  ` : ""}
           <div class="unit">${item.Unit}</div>
           <div class="meta">${item.Franchise} / ${item.Faction}</div>
           <div class="meta">${item.Variant || ""}</div>
@@ -170,8 +162,6 @@
           <div class="notes">
             ${item.Notes || ""}
           </div>
-
-          
         `;
 
         container.appendChild(card);
