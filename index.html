@@ -111,6 +111,28 @@
       });
 
       populateFilters();
+      function getImageUrl(url) {
+  if (!url) return "";
+
+  // Already working direct image format
+  if (url.includes("lh3.googleusercontent.com/d/")) {
+    return url;
+  }
+
+  // Google Drive format: /file/d/FILE_ID/view
+  let match = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+  if (match) {
+    return `https://lh3.googleusercontent.com/d/${match[1]}`;
+  }
+
+  // Google Drive format: ?id=FILE_ID
+  match = url.match(/[?&]id=([^&]+)/);
+  if (match) {
+    return `https://lh3.googleusercontent.com/d/${match[1]}`;
+  }
+
+  return url;
+}
       renderInventory();
     }
 
@@ -160,10 +182,7 @@
           ${item.Image ? `
     <img
       class="mini-image"
-      src="${item.Image.replace(
-  /https:\/\/drive\.google\.com\/file\/d\/([^\/]+).*/,
-  'https://lh3.googleusercontent.com/d/$1'
-)}"
+      src="${getImageUrl(item.Image)}"
       alt="${item.Unit}"
       onerror="this.style.display='none'"
     >
