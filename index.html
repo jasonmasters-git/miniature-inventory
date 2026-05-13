@@ -53,6 +53,13 @@
       margin-top: 10px;
       font-size: 14px;
     }
+
+    .notes {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #05f318 !important;
+  font-style: italic;
+    }   
   </style>
 </head>
 <body>
@@ -151,6 +158,10 @@
             Built: ${item["Built Qty"] || 0}<br>
             Painted: ${item["Painted Qty"] || 0}
           </div>
+
+           <div class="notes">
+           ${item.Notes || ""}
+        </div>
         `;
 
         container.appendChild(card);
