@@ -60,6 +60,13 @@
   color: #127227 !important;
   font-style: italic;
   }
+  .mini-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
   </style>
 </head>
 <body>
@@ -150,6 +157,14 @@
         card.className = "card";
 
         card.innerHTML = `
+          ${item.Image ? `
+    <img
+      class="mini-image"
+      src="${item.Image}"
+      alt="${item.Unit}"
+      onerror="this.style.display='none'"
+    >
+  ` : ""}
           <div class="unit">${item.Unit}</div>
           <div class="meta">${item.Franchise} / ${item.Faction}</div>
           <div class="meta">${item.Variant || ""}</div>
@@ -162,6 +177,8 @@
           <div class="notes">
             ${item.Notes || ""}
           </div>
+
+          
         `;
 
         container.appendChild(card);
