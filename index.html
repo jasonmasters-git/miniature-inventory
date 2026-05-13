@@ -160,7 +160,10 @@
           ${item.Image ? `
     <img
       class="mini-image"
-      src="${item.Image}"
+      src="${item.Image.replace(
+  /https:\/\/drive\.google\.com\/file\/d\/([^\/]+).*/,
+  'https://lh3.googleusercontent.com/d/$1'
+)}"
       alt="${item.Unit}"
       onerror="this.style.display='none'"
     >
