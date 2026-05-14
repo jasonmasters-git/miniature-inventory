@@ -190,10 +190,10 @@ updateStats(filtered);
 
         card.innerHTML = `
          ${item.Image ? `
-  <a href="${getImageUrl(item.Image)}" target="_blank">
+  <a href="${item.Image}" target="_blank">
     <img
       class="mini-image"
-      src="${getImageUrl(item.Image)}"
+      src="${item.Image}"
       alt="${item.Unit}"
       onerror="this.style.display='none'"
     >
