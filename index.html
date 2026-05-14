@@ -130,7 +130,9 @@
       });
 
       populateFilters();
-      function updateStats(items) {
+      renderInventory();
+    }
+    function updateStats(items) {
   const totalModels = items.reduce((sum, item) => {
     return sum + Number(item["Total Qty"] || 0);
   }, 0);
@@ -142,9 +144,6 @@
   document.getElementById("totalModels").textContent = totalModels;
   document.getElementById("totalPainted").textContent = totalPainted;
 }
-      renderInventory();
-    }
-
     function populateFilters() {
       const franchises = [...new Set(inventory.map(i => i.Franchise))].sort();
       const factions = [...new Set(inventory.map(i => i.Faction))].sort();
