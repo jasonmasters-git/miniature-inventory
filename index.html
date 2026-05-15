@@ -141,25 +141,13 @@
     return sum + Number(item["Painted Qty"] || 0);
   }, 0);
 
-  function getImageUrl(url) {
-  if (!url) return "";
-
-  if (url.includes("lh3.googleusercontent.com/d/")) {
-    return url;
-  }
-
-  const match = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
-
-  if (match) {
-    return `https://lh3.googleusercontent.com/d/${match[1]}`;
-  }
-
-  return url;
-}
+  
 
   document.getElementById("totalModels").textContent = totalModels;
   document.getElementById("totalPainted").textContent = totalPainted;
 }
+
+
     function populateFilters() {
       const franchises = [...new Set(inventory.map(i => i.Franchise))].sort();
       const factions = [...new Set(inventory.map(i => i.Faction))].sort();
@@ -181,7 +169,21 @@
         factionFilter.appendChild(option);
       });
     }
+    function getImageUrl(url) {
+  if (!url) return "";
 
+  if (url.includes("lh3.googleusercontent.com/d/")) {
+    return url;
+  }
+
+  const match = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+
+  if (match) {
+    return `https://lh3.googleusercontent.com/d/${match[1]}`;
+  }
+
+  return url;
+}
     function renderInventory() {
       const search = document.getElementById("searchBox").value.toLowerCase();
       const franchise = document.getElementById("franchiseFilter").value;
