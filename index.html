@@ -141,6 +141,22 @@
     return sum + Number(item["Painted Qty"] || 0);
   }, 0);
 
+  function getImageUrl(url) {
+  if (!url) return "";
+
+  if (url.includes("lh3.googleusercontent.com/d/")) {
+    return url;
+  }
+
+  const match = url.match(/drive\.google\.com\/file\/d\/([^\/]+)/);
+
+  if (match) {
+    return `https://lh3.googleusercontent.com/d/${match[1]}`;
+  }
+
+  return url;
+}
+
   document.getElementById("totalModels").textContent = totalModels;
   document.getElementById("totalPainted").textContent = totalPainted;
 }
@@ -189,8 +205,16 @@ updateStats(filtered);
         card.className = "card";
 
         card.innerHTML = `
-
- ""}
+${item.Image ? `
+  <a href="${getImageUrl(item.Image)}" target="_blank">
+    <img
+      class="mini-image"
+      src="${getImageUrl(item.Image)}"
+      alt="${item.Unit}"
+      onerror="this.style.display='none'"
+    >
+  </a>
+` : ""}
           <div class="unit">${item.Unit}</div>
           <div class="meta">${item.Franchise} / ${item.Faction}</div>
           <div class="meta">${item.Variant || ""}</div>
