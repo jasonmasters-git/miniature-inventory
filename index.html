@@ -189,16 +189,8 @@ updateStats(filtered);
         card.className = "card";
 
         card.innerHTML = `
-${item.Image ? `
-  <a href="${getImageUrl(item.Image)}" target="_blank">
-    <img
-      class="mini-image"
-      src="${getImageUrl(item.Image)}"
-      alt="${item.Unit}"
-      onerror="this.style.display='none'"
-    >
-  </a>
-` : ""}
+
+ ""}
           <div class="unit">${item.Unit}</div>
           <div class="meta">${item.Franchise} / ${item.Faction}</div>
           <div class="meta">${item.Variant || ""}</div>
